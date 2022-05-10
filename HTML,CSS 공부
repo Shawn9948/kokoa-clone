@@ -891,3 +891,332 @@ flex-wrap: nowrap-reverse;
 
 flex-wrap: wrap-reverse; 다 가능하다
 
+
+
+
+
+
+
+
+# CSS심화 학습
+
+배울 내용 
+
+Anumation, Transformation, Transition 같은 것들에 대해서..
+
+## Transition
+
+어떤 상태에서 다른 상태로의 “변화"를 애니메이션으로 만드는 방법이다. 
+
+```html
+<!DOCTYPE html>
+<html>
+  <head lang="kr">
+    <title>The Zion Times</title>
+    <style>
+      a {
+        color: white;
+        background-color: tomato;
+        text-decoration: none; #링크의 밑줄을 없애준다.
+        padding: 3px 5px;
+        border-radius: 5px;
+				transition: background-color 10s ease-in-out; 
+      }
+      a:hover {
+        color: tomato;
+        background-color: wheat;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="#">Go Home</a>
+  </body>
+</html>
+```
+
+transition이라는 속성은 state가 없는 요소에 붙어야한다. 
+
+즉, hover가 있는 쪽이 아니라 없는 쪽에 써야한다.
+
+```html
+transition: background-color 10s ease-in-out; 
+```
+
+transition을 적고 : 바꾸고싶은것을 적고 몇초동안 변경할지 적고  ease-in-out; 세미콜론으로 닫으면된다.
+
+원하는경우 transtion을 더 추가해도 된다. 배경색 뿐만 아니라 글씨색도 transition을 줄수있다. 
+
+```html
+transition: background-color 1s ease-in-out, color 5s ease-in-out;
+```
+
+쉼표를 사용해서 더 추가해주었다. 
+
+### 기억할것
+
+transtion이 작동되는 이유는 a:hover가 작동하기 때문에 작동되는것이다. 
+
+transition이 hover에 있는 background-color를 찾고 background-color가 hover일때 달라져있으면 그변화를 애니메이션으로 바꾸는 것이다. 
+
+그렇다면 우리는 코드를 이렇게 작성할수있다.
+
+```html
+transition: all 2s ease-in-out;
+```
+
+이렇게 작성한다면 변화하는 모든것에 효과를 줄수있다. 
+
+## ease-in-out;
+
+기본적으로 브라우저에게 애니메이션이 어떻게 변할지 말해주는 것이다.
+
+ease-in-out말고도 많은 효과들이있다.
+
+디폴트로 갖고있는 것은 linear, ease-in, ease-out, ease, ease-in-out이다 
+
+cubic-bezier()을 통해서도 우리가 직접 커스터마이즈 할수있다. 
+
+```html
+transition: all 2s cubic-bezier(0.250, 0.250, 0.750, 0.750);
+```
+
+[https://matthewlein.com/tools/ceaser](https://matthewlein.com/tools/ceaser) 사이트에서 효과를 확인해보자
+
+## transformation
+
+한 요소를 말 그대로 변형시킬수 있기 때문에 개쩐다
+
+css로 3D까지 할수 있기 때문에 cool한것임
+
+transform 안에 엄청나게 많은 기능들이 있다
+
+transformation은 box element를 변형시키지 않는다.
+
+즉, 옆에 sibling들에게 영향을 끼치지 않는다.
+
+margin, padding이 적용되지 않는다. 일종의 3D transformation이기 때문이다.
+
+margin이나 padding을 주기위해서 tarnslateX, trnasLateY 를 사용하는것이 아니다!
+
+다른 요소의 box를 변형시키지 않고 원하는 요소를 이동시키기 위해서 사용하는 것이다.
+
+trransformation 은 페이지의 픽셀의 다른 부분에서 일어난다.
+
+transformatino은 box차원에서 일어나지 않는다.
+
+tronsformation 을 결합 가능하다! (transition과 hover로 효과를 주었다. 
+
+```html
+<!DOCTYPE html>
+<html>
+  <head lang="kr">
+    <title>The Zion Times</title>
+    <style>
+      img {
+        border: 10px solid black;
+        border-radius: 50%;
+        transition: transform 5s ease-in-out;
+      }
+      img:hover {
+        transform: rotate(90deg);
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="KakaoTalk_Photo_2017-10-23-18-34-52.jpeg" />
+  </body>
+</html>
+```
+
+transformation을 중복으로 사용할수도있다. 콤마를 사용하지 않아도 된다. 
+
+```html
+img:hover {
+        transform: rotate(90deg) scale(0.5);
+```
+
+CSS의 3D는 GPU로 돌아간다 즉 3D작업을 할 수 있다
+
+transformation 은 이것 역시 엄청나게 많은 document가 있다 확인해서 combine할 수 있다
+
+transition 과 transformation 을 합친다면 아름다운 애니매이션을 만들 수 있다
+
+## ANIMATIONS
+
+지금까지 우리는 우리가 마우스를 올리면 움직이는 애니메이션을 배웠다. 하지만 이제 자기혼자 작동하는 애니메이션을 구동하려면 어떻게 해야할까?
+
+만드는 방법은 두가지가 있다 
+
+## 첫번째
+
+COIN FLIP이라 부르는 애니메이션을 만들어보자.
+
+먼저 변수를 선언하듯 애니메이션을 선언해야한다. 
+
+```html
+@keyframes superCoinFlip{}
+```
+
+@ 이가 꼭 있어야 한다
+
+```html
+<!DOCTYPE html>
+<html>
+  <head lang="kr">
+    <title>The Zion Times</title>
+    <style>
+      @keyframes superCoinFlip {
+        form {
+          transform: rotateX(0);
+        }
+        to {
+          transform: rotateX(360deg);
+        }
+      }
+      img {
+        border: 10px solid black;
+        border-radius: 50;
+        animation: superCoinFlip 3s ease-in-out;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="KakaoTalk_Photo_2017-10-23-18-34-52.jpeg" />
+  </body>
+</html>
+```
+
+코드를 보면 애니메이션 명을 지정후 그후 괄호안에 form과 to로 처음 상태에서 마지막 상태로 움직여줘 라고 말하는것이다. 그리고 img에서 animation을 작동시키는것이다. 
+
+```html
+  animation: superCoinFlip 3s ease-in-out infinite;
+```
+
+추가로 infinite를 추가해서 무한하게 반복 시킬수있다. 
+
+## 두번째
+
+```html
+<!DOCTYPE html>
+<html>
+  <head lang="kr">
+    <title>The Zion Times</title>
+    <style>
+      @keyframes superCoinFlip {
+        0% {
+          transform: rotatex(0);
+        }
+        50% {
+          transform: rotateY(180deg) translateX(-100px);
+        }
+        100% {
+          transform: rotateX(0);
+        }
+      }
+      img {
+        width: 200px;
+        height: 200px;
+        border: 10px solid black;
+        border-radius: 50;
+        animation: superCoinFlip 3s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <img src="KakaoTalk_Photo_2017-10-23-18-34-52.jpeg" />
+  </body>
+</html>
+```
+
+한바퀴를 돌았다가 다시 돌아오게 하려면 이렇게 3단계로 구분을해서 코드를 작성하면 된다. 
+
+## Media query
+
+Media query는 오직 CSS만을 이용해서  나의 웹사이트를 보고 있는 사용자의 스크린 사이즈를 알 수 있는 방법이다. 가끔 CSS style을 바꾸고 싶을 때가 있을것이다. 누군가가 나의 웹사이트를 아이폰으로 본다면?,혹은 아주 큰 화면으로 본다면? 혹은 누군가가 landscape모드(가로모드)로 본다면? 아니면 portrait모드(세로모드)로 본다면? 오직 CSS만으로 이 모든 것을 감지할 수 있다.  
+
+따라서 Media query는 브라우저에게 이렇게 말한다. 핸드폰이나 스크린사이즈가 이정도 크기라면 이 css를 보여줘
+
+```html
+@media screen and(max-width:700px) {
+        div {
+          background-color: tomato;
+        }
+      }
+```
+
+이 코드의 의미는 사용자의 스크린의 너비가 600px보다 작다면 div의 배경색을 토마토색으로 해달라는 뜻이다.
+
+```html
+@media screen and (min-width: 700px) and (max-width: 1000px) {
+        div {
+          background-color: tomato;
+        }
+      }
+```
+
+이렇게 코드를 작성하면 700~1000사이 픽셀에서만 div의 배경색을 변경해달라는 의미이다. 
+
+```html
+@media screen and (max-width: 1000px) {
+        div {
+          background-color: wheat;
+        }
+      }
+      @media screen and (min-width: 1000px) and (max-width: 1500px) {
+        div {
+          background-color: tomato;
+        }
+      }
+      @media screen and (min-width: 1500px) {
+        div {
+          background-color: black;
+        }
+      }
+```
+
+이렇게 끊김없이 색을 지정해서 여러개 만들수도있다. 
+
+```html
+@media screen and (min-width: 1000px) and (max-width: 1500px) and (orientation:landscape){
+        div {
+          background-color: tomato;
+        }
+      }
+```
+
+orientation으로 가로모드일때와 세로모드일때 구분해서 옵션을 지정해줄수있다. 
+
+**orientation: landscape 또는 portrait** 
+
+## 정리
+
+media query는 우리가 조건을 추가할 수 있는 방법이다. 코드의 조건을 적는다! 이조건이 참이라면 이 css를 실행하라는 조건을 말한다. 
+
+### max-device-width , min-device-width
+
+이것을 오직 모바일에서만 적용되는 코드이다.
+
+## Media Queries 주요기능
+
+- min-device-width
+- max-device-width
+- orientation: landscape
+- orientation: portrait
+- aspect-ration - 레티나디스플레이 감지가능
+- display-mode
+- inverted-colors
+- lightlevel
+- prefers-contrast
+- resolution
+- monochrome
+
+Media type
+
+@media screen{}
+
+@media print{}
+
