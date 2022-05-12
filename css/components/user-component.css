@@ -30,7 +30,7 @@
   height: 80px;
 }
 
-.user-component__column :last-child {
+.user-component__column:last-child {
   color: rgba(0, 0, 0, 0.5);
 }
 
@@ -42,4 +42,17 @@
 
 .user-component__title--not-bold {
   font-weight: 400;
+}
+
+.user-notification {
+  flex-direction: column;
+  display: flex;
+  align-items: flex-end;
+}
+.user-component__time {
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 10px;
+}
+.exception {
+  color: white;
 }
