@@ -142,3 +142,7 @@ a {
   top: 0;
   width: 100%;
 }
+
+.none {
+  opacity: 0;
+}

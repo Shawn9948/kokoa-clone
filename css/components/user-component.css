@@ -56,3 +56,8 @@
 .exception {
   color: white;
 }
+.user-component__subtitle i {
+  color: red;
+  opacity: 0.5;
+  margin-left: 3px;
+}

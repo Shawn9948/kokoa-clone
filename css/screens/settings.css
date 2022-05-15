@@ -1,0 +1,26 @@
+.settings__setting {
+  padding: 20px 0;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  display: flex;
+}
+.settings-list i {
+  font-size: 30px;
+  text-align: center;
+}
+.settings__setting i {
+  padding: 0px 20px;
+}
+.settings__last-border {
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+.settings__setting-span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.second__color {
+  color: rgba(0, 0, 0, 0.4);
+}
