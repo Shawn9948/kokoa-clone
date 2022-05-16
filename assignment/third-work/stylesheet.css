@@ -1,0 +1,93 @@
+body {
+    background-color: rgb(243, 243, 243);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+}
+.top{
+    padding-bottom: 30px;
+}
+header{
+    display: flex;
+    justify-content: center;
+}
+.screen-header {
+    padding: 20px;
+    font-size: 35px;
+
+}
+
+.main-screen span {
+    display: block;
+}
+
+.top {
+    display: flex;
+    justify-content: center;
+    
+}
+
+.top-box__tomato {
+    height: 330px;
+    width: 200px;
+    background-color: tomato;
+    margin-right: 30px;
+    position: relative;
+    border: 7px solid white;
+}
+.top-box__first {
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    transition: all 2s ease-in-out ;
+}
+
+.top-box__teal {
+    height: 330px;
+    width: 200px;
+    background-color: teal;
+    position: relative;
+    border: 7px solid white;
+}
+.top-box__second {
+    background-color: white;
+    position: absolute;
+    top: 30px;
+    width: 100%;
+    transition: all 2s ease-in-out ;
+}
+
+.first-span{
+    font-size: 20px;
+    padding: 20px 0px;
+}
+.second-span{
+    font-size: 15px;
+    padding-bottom: 20px;
+}
+
+.top-box__burlywood {
+    height: 330px;
+    width: 200px;
+    background-color: burlywood;
+    margin-right: 30px;
+    position: relative;
+    border: 7px solid white;
+}
+
+.top-box__thistle{
+    height: 330px;
+    width: 200px;
+    background-color: thistle;
+    position: relative;
+    border: 7px solid white;
+}
+
+.top-box__first:hover {
+    background-color: inherit;
+    color: rgba(0, 0, 0, 0);
+}
+.top-box__second:hover {
+    background-color: inherit;
+    color: rgba(0, 0, 0, 0);
+}
