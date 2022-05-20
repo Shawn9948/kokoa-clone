@@ -1,0 +1,21 @@
+@import "reset.css";
+
+@import "components/alt-header.css";
+
+@import "screen/index.css";
+@import "screen/song.css";
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(247, 247, 247);
+}
+.whole-page{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1300px;
+    width: 1450px;
+    overflow: auto;
+}
+
